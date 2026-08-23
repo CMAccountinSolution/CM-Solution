@@ -3,497 +3,803 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CM Solutions | Professional Digital & Business Services</title>
+    <title>CM Solutions | Professional Digital & Business Solutions</title>
+    <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <style>
       :root {
         --primary: #0f172a;
-        --accent: #2563eb;
+        --primary-light: #1e293b;
+        --accent: #3b82f6;
+        --accent-glow: rgba(59, 130, 246, 0.4);
         --whatsapp: #25d366;
-        --call: #f97316;
-        --bg: #f8fafc;
-        --text-dark: #0f172a;
-        --text-muted: #64748b;
-        --border-yellow: #eab308;
-        --radius: 16px;
+        --call: #ff6b00;
+        --bg: #090d16;
+        --card-bg: rgba(30, 41, 59, 0.7);
+        --card-hover: rgba(51, 65, 85, 0.8);
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --border: rgba(255, 255, 255, 0.1);
+        --gold: #f59e0b;
+        --radius-lg: 24px;
+        --radius-md: 16px;
       }
 
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: "Poppins", sans-serif;
+        font-family: "Outfit", "Noto Sans Sinhala", sans-serif;
+        scroll-behavior: smooth;
       }
 
       body {
         background-color: var(--bg);
-        color: var(--text-dark);
+        color: var(--text-main);
         line-height: 1.6;
+        overflow-x: hidden;
+        background-image:
+          radial-gradient(
+            at 0% 0%,
+            rgba(59, 130, 246, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 100%,
+            rgba(245, 158, 11, 0.1) 0px,
+            transparent 50%
+          );
+        background-attachment: fixed;
+        padding-bottom: 80px; /* Space for mobile floating bar */
       }
 
-      header {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      /* Top Bar */
+      .top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 2rem;
+        max-width: 1300px;
+        margin: 0 auto;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand-logo {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, var(--accent), #1d4ed8);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: white;
-        padding: 4rem 1.5rem;
-        text-align: center;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        font-weight: 800;
+        font-size: 1.3rem;
+        box-shadow: 0 0 15px var(--accent-glow);
       }
 
-      header h1 {
-        font-size: 2.8rem;
+      .brand-text h2 {
+        color: var(--text-main);
+        font-size: 1.4rem;
         font-weight: 700;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(to right, #ffffff, #93c5fd);
+        letter-spacing: 0.5px;
+      }
+
+      .brand-text p {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 4rem 1.5rem 3rem;
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: var(--accent);
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 1.2rem;
+        background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      header p {
-        color: #94a3b8;
-        font-size: 1.15rem;
-        font-weight: 300;
+      .hero h1 span {
+        background: linear-gradient(135deg, #60a5fa, #3b82f6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
-      .contact-container {
+      .hero p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Action Buttons */
+      .cta-group {
         display: flex;
         justify-content: center;
-        gap: 15px;
-        margin-top: 2rem;
+        gap: 16px;
         flex-wrap: wrap;
       }
 
       .btn {
-        padding: 12px 28px;
+        padding: 14px 32px;
         border-radius: 50px;
         text-decoration: none;
-        color: white;
         font-weight: 600;
-        font-size: 0.95rem;
+        font-size: 1rem;
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        gap: 10px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        border: none;
       }
 
       .btn-whatsapp {
-        background-color: var(--whatsapp);
-      }
-      .btn-whatsapp:hover {
-        background-color: #20ba5a;
-        transform: translateY(-2px);
-      }
-      .btn-call {
-        background-color: var(--call);
-      }
-      .btn-call:hover {
-        background-color: #ea580c;
-        transform: translateY(-2px);
+        background: linear-gradient(135deg, #25d366, #128c7e);
+        color: white;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
       }
 
-      .container {
+      .btn-whatsapp:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+      }
+
+      .btn-call {
+        background: linear-gradient(135deg, #ff6b00, #ff8800);
+        color: white;
+        box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+      }
+
+      .btn-call:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 107, 0, 0.5);
+      }
+
+      /* Search & Filter Controls */
+      .controls-container {
         max-width: 1200px;
-        margin: 3rem auto;
+        margin: 2rem auto;
         padding: 0 1.5rem;
       }
 
-      .section-header {
-        text-align: center;
-        margin-bottom: 2.5rem;
+      .search-box {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto 2rem;
       }
 
-      .section-header h2 {
-        font-size: 2rem;
-        color: var(--primary);
-        font-weight: 700;
-      }
-
-      .section-header p {
-        color: var(--text-muted);
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-        gap: 1.8rem;
-      }
-
-      /* All Service Cards Highlighted Yellow */
-      .service-card {
-        background-color: #fef08a !important; /* Soft Bright Yellow */
-        border: 2px solid var(--border-yellow) !important;
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: 0 8px 20px rgba(234, 179, 8, 0.25);
+      .search-box input {
+        width: 100%;
+        padding: 16px 20px 16px 50px;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        color: white;
+        font-size: 1rem;
+        backdrop-filter: blur(10px);
+        outline: none;
         transition: all 0.3s ease;
       }
 
-      .service-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 25px rgba(234, 179, 8, 0.4);
+      .search-box input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 20px var(--accent-glow);
       }
 
-      .card-header {
-        padding: 1.4rem 1.6rem;
-        background-color: #fef08a !important;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        user-select: none;
+      .search-box i {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
       }
 
-      .card-header h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--primary);
+      /* Filter Tabs */
+      .filter-tabs {
         display: flex;
-        align-items: center;
+        justify-content: center;
+        gap: 10px;
         flex-wrap: wrap;
-        gap: 6px;
+        margin-bottom: 2.5rem;
       }
 
-      .click-badge {
-        display: inline-block;
-        background-color: #dc2626;
+      .tab-btn {
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        border-radius: 30px;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .tab-btn.active,
+      .tab-btn:hover {
+        background: var(--accent);
         color: white;
-        font-size: 0.72rem;
-        font-weight: 700;
-        padding: 3px 8px;
-        border-radius: 20px;
-        animation: pulse 1.5s infinite;
+        border-color: var(--accent);
+        box-shadow: 0 0 15px var(--accent-glow);
       }
 
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.08);
-        }
-        100% {
-          transform: scale(1);
-        }
+      /* Services Grid */
+      .services-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2rem;
       }
 
-      .arrow-icon {
-        font-size: 0.8rem;
-        color: var(--primary);
-        background-color: #fef9c3;
-        border: 1px solid #fde047;
-        width: 28px;
-        height: 28px;
+      .service-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        backdrop-filter: blur(12px);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), var(--gold));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        background: var(--card-hover);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .service-card:hover::before {
+        opacity: 1;
+      }
+
+      .card-icon {
+        width: 55px;
+        height: 55px;
+        background: rgba(59, 130, 246, 0.1);
+        border-radius: var(--radius-md);
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        transition: transform 0.3s ease;
+        font-size: 1.5rem;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(59, 130, 246, 0.2);
       }
 
-      .card-body {
-        display: none;
-        padding: 1.5rem 1.6rem;
-        background-color: #fffde7;
-        border-top: 1px solid #fef08a;
-      }
-
-      .service-card.active .card-body {
-        display: block;
-      }
-
-      .service-card.active .arrow-icon {
-        transform: rotate(180deg);
-        background-color: var(--primary);
-        color: white;
+      .card-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-main);
       }
 
       .service-list {
         list-style: none;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.8rem;
       }
 
       .service-list li {
-        padding: 0.55rem 0;
-        border-bottom: 1px dashed #fef08a;
         font-size: 0.95rem;
-        color: #475569;
+        color: var(--text-muted);
+        margin-bottom: 0.6rem;
         display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .service-list li i {
+        color: var(--accent);
+        font-size: 0.8rem;
+      }
+
+      .card-footer {
+        border-top: 1px solid var(--border);
+        padding-top: 1.2rem;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
       }
 
-      .service-list li::before {
-        content: "•";
-        color: var(--accent);
-        font-weight: bold;
-        font-size: 1.2rem;
-        margin-right: 10px;
+      .price-label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        display: block;
       }
 
-      .price-tag {
-        padding: 0.8rem 1.2rem;
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        color: var(--accent);
+      .price-value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--gold);
+      }
+
+      .order-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: var(--text-main);
+        padding: 8px 16px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 0.85rem;
         font-weight: 600;
-        text-align: center;
-        border-radius: 12px;
-        font-size: 0.95rem;
-        border: 1px solid #bfdbfe;
+        transition: all 0.3s ease;
       }
 
+      .service-card:hover .order-btn {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: white;
+      }
+
+      /* Floating Contact Bar for Mobile */
+      .mobile-floating-bar {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(15px);
+        padding: 8px 16px;
+        border-radius: 50px;
+        display: flex;
+        gap: 12px;
+        z-index: 1000;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .float-btn {
+        padding: 10px 20px;
+        border-radius: 30px;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* Footer */
       footer {
         text-align: center;
-        padding: 2.5rem 1rem;
-        margin-top: 4rem;
-        background-color: var(--primary);
-        color: #64748b;
+        padding: 4rem 1.5rem 2rem;
+        border-top: 1px solid var(--border);
+        margin-top: 5rem;
+        color: var(--text-muted);
         font-size: 0.9rem;
+      }
+
+      footer strong {
+        color: var(--text-main);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        .top-nav {
+          justify-content: center;
+        }
+        .cta-group {
+          width: 100%;
+        }
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>CM Solutions</h1>
-      <p>Your Trusted Partner for Professional Digital & Business Solutions</p>
+    <!-- Header -->
+    <nav class="top-nav">
+      <a href="#" class="brand">
+        <div class="brand-logo">CM</div>
+        <div class="brand-text">
+          <h2>CM Solutions</h2>
+          <p>Digital & Business Services</p>
+        </div>
+      </a>
+    </nav>
 
-      <div class="contact-container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="badge">
+        <i class="fa-solid fa-bolt"></i> Fast & Professional Service
+      </div>
+      <h1>
+        ඔබේ සියලුම <span>ඩිජිටල් සහ ව්‍යාපාරික</span> අවශ්‍යතා එකම තැනකින්
+      </h1>
+      <p>
+        ලේඛන සකස් කිරීම්, දත්ත ඇතුලත් කිරීම්, නිර්මාණකරණය ඇතුළු සියලුම සේවාවන්
+        විශ්වාසවන්තව ඉටු කරවා ගන්න.
+      </p>
+
+      <div class="cta-group">
         <a
-          href="https://wa.me/94713306364"
+          href="https://wa.me/94764635887?text=Hi%20CM%20Solutions,%20I%20need%20more%20info"
           class="btn btn-whatsapp"
           target="_blank"
         >
-          WhatsApp: 071 330 6364
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp: 076 463 5887
         </a>
-        <a href="tel:+94713306364" class="btn btn-call">
-          Call Now: 071 330 6364
+        <a href="tel:+94764635887" class="btn btn-call">
+          <i class="fa-solid fa-phone"></i> Call Now: 076 463 5887
         </a>
       </div>
-    </header>
+    </section>
 
-    <div class="container">
-      <div class="section-header">
-        <h2>Our Services</h2>
-        <p>Select a category below to explore our services & pricing</p>
+    <!-- Search & Filters -->
+    <div class="controls-container">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+          type="text"
+          id="searchInput"
+          onkeyup="searchServices()"
+          placeholder="ඔබට අවශ්‍ය සේවාව මෙහි සූචනය කරන්න (Search)..."
+        />
       </div>
 
-      <div class="services-grid">
-        <!-- 1. Typing & Document Services -->
-        <div class="service-card">
-          <div class="card-header" onclick="toggleCard(this)">
-            <h3>
-              ⌨️ Typing & Document Services
-              <span class="click-badge">👈 Click This</span>
-            </h3>
-            <span class="arrow-icon">▼</span>
-          </div>
-          <div class="card-body">
-            <ul class="service-list">
-              <li>Sinhala Typing</li>
-              <li>English Typing</li>
-              <li>Sinhala / English Typing</li>
-              <li>Handwritten → Word</li>
-              <li>PDF → Word</li>
-              <li>Image → Word</li>
-              <li>PDF → Excel</li>
-              <li>Assignment Typing</li>
-              <li>Business Letter Typing</li>
-              <li>Application / Official Letter Typing</li>
-              <li>Document Formatting</li>
-              <li>Report Formatting</li>
-            </ul>
-            <div class="price-tag">Starting from Rs. 100 / page</div>
-          </div>
-        </div>
-
-        <!-- 2. Excel & Data Entry Services -->
-        <div class="service-card">
-          <div class="card-header" onclick="toggleCard(this)">
-            <h3>
-              📊 Excel & Data Entry
-              <span class="click-badge">👈 Click This</span>
-            </h3>
-            <span class="arrow-icon">▼</span>
-          </div>
-          <div class="card-body">
-            <ul class="service-list">
-              <li>Data Entry</li>
-              <li>Excel Data Entry</li>
-              <li>Excel Table Creation</li>
-              <li>Excel Formatting</li>
-              <li>Excel Formulas</li>
-              <li>Attendance Sheets</li>
-              <li>Salary Sheets</li>
-              <li>Stock Sheets</li>
-              <li>Sales Sheets</li>
-              <li>Expense Sheets</li>
-              <li>Invoice Data Entry</li>
-              <li>Product Data Entry</li>
-              <li>Online Form Filling</li>
-              <li>Data Collection</li>
-            </ul>
-            <div class="price-tag">Starting from Rs. 500</div>
-          </div>
-        </div>
-
-        <!-- 3. CV & Professional Documents -->
-        <div class="service-card">
-          <div class="card-header" onclick="toggleCard(this)">
-            <h3>
-              📄 CV & Professional Documents
-              <span class="click-badge">👈 Click This</span>
-            </h3>
-            <span class="arrow-icon">▼</span>
-          </div>
-          <div class="card-body">
-            <ul class="service-list">
-              <li>Basic CV</li>
-              <li>Professional CV</li>
-              <li>CV Formatting</li>
-              <li>Cover Letter</li>
-              <li>Job Application</li>
-              <li>Business Letters</li>
-              <li>Official Documents</li>
-              <li>Professional Reports</li>
-            </ul>
-            <div class="price-tag">Starting from Rs. 500</div>
-          </div>
-        </div>
-
-        <!-- 4. Graphic Design -->
-        <div class="service-card">
-          <div class="card-header" onclick="toggleCard(this)">
-            <h3>
-              🎨 Graphic Design
-              <span class="click-badge">👈 Click This</span>
-            </h3>
-            <span class="arrow-icon">▼</span>
-          </div>
-          <div class="card-body">
-            <ul class="service-list">
-              <li>Canva Posters</li>
-              <li>Facebook Posts</li>
-              <li>Social Media Designs</li>
-              <li>Business Cards</li>
-              <li>Invitation Cards</li>
-              <li>Certificates</li>
-              <li>School Notices</li>
-              <li>Menus</li>
-              <li>Flyers</li>
-              <li>Basic Logos</li>
-            </ul>
-            <div class="price-tag">Starting from Rs. 300</div>
-          </div>
-        </div>
-
-        <!-- 5. Accounting & Bookkeeping -->
-        <div class="service-card">
-          <div class="card-header" onclick="toggleCard(this)">
-            <h3>
-              📈 Accounting & Bookkeeping
-              <span class="click-badge">👈 Click This</span>
-            </h3>
-            <span class="arrow-icon">▼</span>
-          </div>
-          <div class="card-body">
-            <ul class="service-list">
-              <li>Sales Recording</li>
-              <li>Expense Recording</li>
-              <li>Cash Book</li>
-              <li>Basic Bookkeeping</li>
-              <li>Monthly Accounts</li>
-              <li>Stock Records</li>
-              <li>Invoice Preparation</li>
-              <li>Excel Accounting Sheets</li>
-              <li>Basic Financial Reports</li>
-            </ul>
-            <div class="price-tag">Starting from Rs. 1,500</div>
-          </div>
-        </div>
-
-        <!-- 6. Online & Digital Services -->
-        <div class="service-card">
-          <div class="card-header" onclick="toggleCard(this)">
-            <h3>
-              🌐 Online & Digital Services
-              <span class="click-badge">👈 Click This</span>
-            </h3>
-            <span class="arrow-icon">▼</span>
-          </div>
-          <div class="card-body">
-            <ul class="service-list">
-              <li>Online Form Filling</li>
-              <li>Email Preparation</li>
-              <li>Online Applications</li>
-              <li>Web Research</li>
-              <li>Data Collection</li>
-              <li>Product Listing</li>
-              <li>PDF Merge / Split</li>
-              <li>PDF Conversion</li>
-              <li>Document Scanning</li>
-              <li>File Conversion</li>
-            </ul>
-            <div class="price-tag">Starting from Rs. 100</div>
-          </div>
-        </div>
-
-        <!-- 7. Translation Services -->
-        <div class="service-card">
-          <div class="card-header" onclick="toggleCard(this)">
-            <h3>
-              🌎 Translation Services
-              <span class="click-badge">👈 Click This</span>
-            </h3>
-            <span class="arrow-icon">▼</span>
-          </div>
-          <div class="card-body">
-            <ul class="service-list">
-              <li>Sinhala → English</li>
-              <li>English → Sinhala</li>
-              <li>Sinhala Document Translation</li>
-              <li>English Document Translation</li>
-              <li>Business Translation</li>
-              <li>General Document Translation</li>
-            </ul>
-            <div class="price-tag">Starting from Rs. 300 / page</div>
-          </div>
-        </div>
-
-        <!-- 8. Presentation Services -->
-        <div class="service-card">
-          <div class="card-header" onclick="toggleCard(this)">
-            <h3>
-              📊 Presentation Services
-              <span class="click-badge">👈 Click This</span>
-            </h3>
-            <span class="arrow-icon">▼</span>
-          </div>
-          <div class="card-body">
-            <ul class="service-list">
-              <li>PowerPoint Presentations</li>
-              <li>School Presentations</li>
-              <li>Business Presentations</li>
-              <li>Training Presentations</li>
-              <li>Presentation Formatting</li>
-              <li>Charts & Tables</li>
-            </ul>
-            <div class="price-tag">Starting from Rs. 1,000</div>
-          </div>
-        </div>
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="filterCategory('all')">
+          සියල්ල (All)
+        </button>
+        <button class="tab-btn" onclick="filterCategory('typing')">
+          Typing
+        </button>
+        <button class="tab-btn" onclick="filterCategory('excel')">
+          Excel & Data
+        </button>
+        <button class="tab-btn" onclick="filterCategory('cv')">
+          CV & Letters
+        </button>
+        <button class="tab-btn" onclick="filterCategory('design')">
+          Graphic Design
+        </button>
+        <button class="tab-btn" onclick="filterCategory('accounts')">
+          Accounts
+        </button>
       </div>
     </div>
 
+    <!-- Services Grid -->
+    <main class="services-grid" id="servicesContainer">
+      <!-- 1. Typing Services -->
+      <div class="service-card" data-category="typing">
+        <div>
+          <div class="card-icon"><i class="fa-solid fa-keyboard"></i></div>
+          <h3 class="card-title">Typing & Documents</h3>
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check"></i> Sinhala & English Typing</li>
+            <li>
+              <i class="fa-solid fa-check"></i> Handwritten / Image / PDF to
+              Word
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Assignment & Report Typing
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Official Letters & Applications
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Professional Document Formatting
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <div>
+            <span class="price-label">ගාස්තුව ආරම්භය</span>
+            <span class="price-value">Rs. 100 / page</span>
+          </div>
+          <a
+            href="https://wa.me/94764635887?text=I%20am%20interested%20in%20Typing%20Services"
+            class="order-btn"
+            target="_blank"
+            >Order Now</a
+          >
+        </div>
+      </div>
+
+      <!-- 2. Excel & Data Entry -->
+      <div class="service-card" data-category="excel">
+        <div>
+          <div class="card-icon"><i class="fa-solid fa-file-excel"></i></div>
+          <h3 class="card-title">Excel & Data Entry</h3>
+          <ul class="service-list">
+            <li>
+              <i class="fa-solid fa-check"></i> Advanced Excel Formatting &
+              Formulas
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Attendance, Salary & Stock
+              Sheets
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Sales, Expense & Invoice Entry
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Online Form Filling & Web
+              Research
+            </li>
+            <li><i class="fa-solid fa-check"></i> Bulk Data Collection</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <div>
+            <span class="price-label">ගාස්තුව ආරම්භය</span>
+            <span class="price-value">Rs. 500</span>
+          </div>
+          <a
+            href="https://wa.me/94764635887?text=I%20am%20interested%20in%20Excel%20Services"
+            class="order-btn"
+            target="_blank"
+            >Order Now</a
+          >
+        </div>
+      </div>
+
+      <!-- 3. CV & Professional -->
+      <div class="service-card" data-category="cv">
+        <div>
+          <div class="card-icon"><i class="fa-solid fa-file-user"></i></div>
+          <h3 class="card-title">CV & Professional Documents</h3>
+          <ul class="service-list">
+            <li>
+              <i class="fa-solid fa-check"></i> Professional CV & Resume Design
+            </li>
+            <li><i class="fa-solid fa-check"></i> Custom Cover Letters</li>
+            <li><i class="fa-solid fa-check"></i> Job Applications</li>
+            <li>
+              <i class="fa-solid fa-check"></i> Business Proposals & Letters
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Executive Document Styling
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <div>
+            <span class="price-label">ගාස්තුව ආරම්භය</span>
+            <span class="price-value">Rs. 500</span>
+          </div>
+          <a
+            href="https://wa.me/94764635887?text=I%20need%20a%20Professional%20CV"
+            class="order-btn"
+            target="_blank"
+            >Order Now</a
+          >
+        </div>
+      </div>
+
+      <!-- 4. Graphic Design -->
+      <div class="service-card" data-category="design">
+        <div>
+          <div class="card-icon">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <h3 class="card-title">Graphic Design</h3>
+          <ul class="service-list">
+            <li>
+              <i class="fa-solid fa-check"></i> Social Media Posts & Flyers
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Business Cards & Invitations
+            </li>
+            <li><i class="fa-solid fa-check"></i> Basic Logos & Menu Cards</li>
+            <li>
+              <i class="fa-solid fa-check"></i> School Notices & Certificates
+            </li>
+            <li><i class="fa-solid fa-check"></i> Canva Designs</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <div>
+            <span class="price-label">ගාස්තුව ආරම්භය</span>
+            <span class="price-value">Rs. 300</span>
+          </div>
+          <a
+            href="https://wa.me/94764635887?text=I%20need%20Graphic%20Design%20Services"
+            class="order-btn"
+            target="_blank"
+            >Order Now</a
+          >
+        </div>
+      </div>
+
+      <!-- 5. Accounting -->
+      <div class="service-card" data-category="accounts">
+        <div>
+          <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3 class="card-title">Accounting & Bookkeeping</h3>
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check"></i> Sales & Expense Recording</li>
+            <li>
+              <i class="fa-solid fa-check"></i> Cash Book & Monthly Accounts
+            </li>
+            <li><i class="fa-solid fa-check"></i> Stock Management Records</li>
+            <li><i class="fa-solid fa-check"></i> Invoice Preparation</li>
+            <li>
+              <i class="fa-solid fa-check"></i> Financial Statements (Basic)
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <div>
+            <span class="price-label">ගාස්තුව ආරම්භය</span>
+            <span class="price-value">Rs. 1,500</span>
+          </div>
+          <a
+            href="https://wa.me/94764635887?text=I%20need%20Accounting%20Services"
+            class="order-btn"
+            target="_blank"
+            >Order Now</a
+          >
+        </div>
+      </div>
+
+      <!-- 6. Online & Translation -->
+      <div class="service-card" data-category="typing">
+        <div>
+          <div class="card-icon"><i class="fa-solid fa-language"></i></div>
+          <h3 class="card-title">Translation & Digital</h3>
+          <ul class="service-list">
+            <li>
+              <i class="fa-solid fa-check"></i> Sinhala ↔️ English Translation
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i> Online Form Filling &
+              Applications
+            </li>
+            <li><i class="fa-solid fa-check"></i> PDF Conversions & Merging</li>
+            <li><i class="fa-solid fa-check"></i> PowerPoint Presentations</li>
+            <li>
+              <i class="fa-solid fa-check"></i> Document Scanning & Cleanup
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <div>
+            <span class="price-label">ගාස්තුව ආරම්භය</span>
+            <span class="price-value">Rs. 300 / page</span>
+          </div>
+          <a
+            href="https://wa.me/94764635887?text=I%20need%20Translation/Digital%20Services"
+            class="order-btn"
+            target="_blank"
+            >Order Now</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <!-- Mobile Quick Navigation Floating Bar -->
+    <div class="mobile-floating-bar">
+      <a
+        href="https://wa.me/94764635887"
+        class="float-btn"
+        style="background: var(--whatsapp)"
+        target="_blank"
+      >
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+      <a
+        href="tel:+94764635887"
+        class="float-btn"
+        style="background: var(--call)"
+      >
+        <i class="fa-solid fa-phone"></i> Call
+      </a>
+    </div>
+
+    <!-- Footer -->
     <footer>
       <p>&copy; 2026 <strong>CM Solutions</strong>. All Rights Reserved.</p>
+      <p style="font-size: 0.8rem; margin-top: 5px">
+        Designed for High-Performance Digital Services
+      </p>
     </footer>
 
+    <!-- JavaScript for Dynamic Interactions -->
     <script>
-      function toggleCard(headerElement) {
-        var card = headerElement.parentElement;
-        card.classList.toggle("active");
+      // Search Filter Functionality
+      function searchServices() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let cards = document.getElementsByClassName("service-card");
+
+        for (let i = 0; i < cards.length; i++) {
+          let cardText = cards[i].innerText.toLowerCase();
+          if (cardText.includes(input)) {
+            cards[i].style.display = "flex";
+          } else {
+            cards[i].style.display = "none";
+          }
+        }
+      }
+
+      // Category Tab Filter Functionality
+      function filterCategory(category) {
+        let cards = document.getElementsByClassName("service-card");
+        let buttons = document.getElementsByClassName("tab-btn");
+
+        // Toggle active class on buttons
+        for (let btn of buttons) {
+          btn.classList.remove("active");
+        }
+        event.currentTarget.classList.add("active");
+
+        // Show/Hide Cards
+        for (let card of cards) {
+          if (
+            category === "all" ||
+            card.getAttribute("data-category") === category
+          ) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        }
       }
     </script>
   </body>
